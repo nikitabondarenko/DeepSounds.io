@@ -1,0 +1,48 @@
+<!-- views/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <title>DeepSounds.io </title>
+</head>
+<nav class="navbar fixed-top">
+  <div class="container-fluid">
+    <h1> DeepSounds.io </h1>
+  </div>
+</nav>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <form action="/info" id="formRegister">
+          <div class="form-group">
+            <label for="id">Genius ID:</label>
+            <input type="name" name="id" class="form-control" id="id" placeholder="Genius ID">
+          </div>
+          <!--
+
+          <div class="form-group">
+            <label for="song">Song:</label>
+            <input type="name" name="Song" class="form-control" id="Song" placeholder="Song">
+          </div>
+          <div class="form-group">
+            <label for="album">Album:</label>
+            <input type="name" name="Album" class="form-control" id="Album" placeholder="Album">
+          </div>
+          <div class="form-group">
+            <label for="artist">Artist:</label>
+            <input type="name" name="Artist" class="form-control" id="Artist" placeholder="Artist">
+          </div>
+        -->
+          <button class="btn btn-primary" id="search" type="submit">Search</button>
+          <button class="btn btn-primary" id="getLyrics" type="submit">Get Lyrics</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<p id="homepage"></p>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+  <script src="main.js"></script>
+</html>
