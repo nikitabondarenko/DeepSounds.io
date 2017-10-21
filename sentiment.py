@@ -10,7 +10,7 @@ def rate(lyrics):
     lyricsEmotion = []
     for line in lyrics:
         lyricsEmotion.append(indicoio.emotion(line))
-    return lyricsEmotion
+    return (lyricsEmotion)
 
 
 # print(string("I do not like this. \nBecause I said so."))
