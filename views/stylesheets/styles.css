@@ -1,0 +1,94 @@
+.container-2 {
+flex: 1;
+  background: #c94b4b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container-4{
+    flex: 1;
+    background: #c94b4b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 3px solid;
+
+}
+#artists {
+  display: flex;
+  flex-direction: column;
+}
+#ul{
+  justify-content: space-between;
+}
+.maps{
+  height: 50vh;
+  width: 100%;
+
+
+  background: #c94b4b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.info {
+  height: 50vh;
+  width: 100%;
+  flex-flow: row;
+  color:  black;
+  justify-content: center;
+  align-items: center;
+}
+
+#ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    display: inline-block;
+    display: flex;
+
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+.header{
+  height: 41px;
+  width: 100%
+}
+.q{
+  padding: 5px;
+  height: 41px;
+  width: 20%;
+}
+
+img {
+  opacity: .8;
+  width: 55%;
+  height: 30%;
+
+  flex-flow: row;
+}
+.body{
+  display: flex;
+  flex-direction: row;
+}

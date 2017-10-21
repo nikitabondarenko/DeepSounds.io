@@ -3,6 +3,7 @@ var app = express();
 var handlebars = require('express-handlebars');
 var hbs = require('hbs');
 var api = require('genius-api');
+var request = require('request');
 var genius = new api(process.env.GENIUS_CLIENT_ACCESS_TOKEN);
 const BASE_URI = "https://api.genius.com";
 if (! process.env.GENIUS_CLIENT_ACCESS_TOKEN) {
@@ -28,47 +29,67 @@ app.get('/search', function (req, res) {
   console.log(req.query.artist);
   genius.search(req.query.artist + ' ' + req.query.song).then(function(response) {
     console.log(response.hits[0].result);
-    res.render('submit', {hit: response.hits[0].result});
+    request('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=V4XUQD1Kz4IoKPAuWZ39NveeylCR8NGG&postalCode=94103',
+    function (error, resp, body){
+      var newBody = JSON.parse(body);
+      newBody1 = newBody._embedded.events.map((event) => (event)).splice(10)
+      newBody = newBody._embedded.events.map((event) => (event.name)).splice(10)
+      // console.log(newBody1);
+    res.render('submit', {
+        hit: response.hits[0].result,
+        annotation: response.hits[0].result.annotation_count,
+        // stats : response.song.stats,
+        songName: response.hits[0].result.full_title,
+        // releaseDate: response.song.release_date,
+        // albumName: response.hits[0].result.annotation_count,
+        artistPicture: response.hits[0].result.song_art_image_thumbnail_url,
+        // youtubeLink: youtubeSplicer(response.song.media[0].url),
+        names: newBody1
+      });
+  })
   })
   .catch(function(err){
     console.log("ERROR", err);
   })
 })
 
+function youtubeSplicer(a) {
+  var youtube = a.slice(0, 23)
+  var addMe = 'embed/'
+  var youtube1 = a.slice(32, -1)
+  return youtube+addMe+youtube1
+
+};
+
+
+
 app.get('/info', function (req, res) {
   console.log("REQ", req.query.id)
-  //lyricist.song(req.query.id).then(song => console.log(song.title));
-  //var song = lyricist.song(req.query.id, {fetchLyrics: true}).then(song => console.log(song.title, song.lyrics));
-  //const song = await lyricist.song(req.query.id, { fetchLyrics: true });
-  //console.log(song)
-  //console.log(song.title)
-  //get annotation
-  // genius.annotation(parseInt(req.query.id)).then(function(response) {
-  //   console.log(response.annotation);
-  //   res.render('submit', {id: req.query.id, annotation: response.annotation});
-  // })
-  // .catch(function(err){
-  //   console.log("ERROR", err);
-  // })
 
-  //get song and data using Genius API
-  //get song lyrics using lyricist npm package
-  genius.song(parseInt(req.query.id)).then(function(response) {
-    console.log(response.song);
-    //console.log(response.song.description_annotation)
-    console.log(response.song.description_annotation)
-    console.log(response.song.stats)
-    //console.log("REQPNOSE", response.song.description_annotation.annotations[0].body.dom.children[0].children);
-    res.render('submit', {id: req.query.id, annotation: response.song.description_annotation.annotations[0],
-      stats : response.song.stats//, lyrics: song.lyrics
+  genius.song(parseInt(req.query.id))
+  .then(function(response) {
+    request('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=V4XUQD1Kz4IoKPAuWZ39NveeylCR8NGG&postalCode=94103',
+    function (error, resp, body){
+      var newBody = JSON.parse(body);
+      newBody1 = newBody._embedded.events.map((event) => (event)).splice(10)
+      newBody = newBody._embedded.events.map((event) => (event.name)).splice(10)
+      console.log(newBody1);
 
-      //render data that does not need python
+      res.render('submit', {id: req.query.id, annotation: response.song.annotation_count,
+        stats : response.song.stats,
+        songName: response.song.full_title,
+        releaseDate: response.song.release_date,
+        albumName: response.song.album.full_title,
+        artistPicture: response.song.primary_artist.header_image_url,
+        youtubeLink: youtubeSplicer(response.song.media[0].url),
+        names: newBody1
+      });
 
-      //render data that needs python
-    });
+    })
+
   }).catch(function(err){
     console.log("ERROR", err);
-  })
+  });
 
 });
 
