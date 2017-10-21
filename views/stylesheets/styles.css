@@ -55,11 +55,11 @@
 form {
   display: flex;
 }
-li, .li {
+.li {
     float: right;
 }
 
-li a, .li a {
+ .li a {
     display: block;
     color: white;
     text-align: center;
