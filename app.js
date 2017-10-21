@@ -54,7 +54,7 @@ app.get('/search', function (req, res) {
 })
 
 function youtubeSplicer(a) {
-  var youtube = a.slice(0, 23)
+  var youtube = a.slice(0, 24)
   var addMe = 'embed/'
   var youtube1 = a.slice(32, -1)
   return youtube+addMe+youtube1
@@ -73,7 +73,8 @@ app.get('/info', function (req, res) {
       var newBody = JSON.parse(body);
       newBody1 = newBody._embedded.events.map((event) => (event)).splice(10)
       newBody = newBody._embedded.events.map((event) => (event.name)).splice(10)
-      console.log(newBody1);
+      // console.log(newBody1);
+      console.log(response.song);
 
       res.render('submit', {id: req.query.id, annotation: response.song.annotation_count,
         stats : response.song.stats,

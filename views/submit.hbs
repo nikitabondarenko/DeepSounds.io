@@ -11,16 +11,33 @@
 </head>
 
 <ul id= 'ul'>
-  <input class = 'q' type="text" name="q" placeholder="Search Songs & Lyrics">
+  <form class="searchnav" action="/search">
+    <input class = 'q' type="text" name="q" placeholder="Search Songs & Lyrics" style="width: 70%; border-radius: 15px; margin: 2px">
+    <button type="submit" name="submit" class="soundbar">
+      <div id="bars">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </button>
+  </form>
   <li><a href="default.asp">Home</a></li>
-  <li><a href="default.asp">News  </a></li>
-  <li><a href="default.asp">Contact Us</a></li>
+  <li><a href="default.asp">Tours</a></li>
+  <li><a href="default.asp">Analytics</a></li>
   <li><a href="news.asp">About</a></li>
-  <li><a href="contact.asp">Login</a></li>
-  <li><a href="about.asp">Signup</a></li>
 </ul>
 
 <body>
+  <!-- <div id="bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div> -->
+
   <div class="body">
 
   <div class="container-2">
@@ -31,9 +48,7 @@
     <p>Album Name: {{albumName}}</p>
     <p>Release Date: {{releaseDate}}</p> -->
     <img src="{{artistPicture}}">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/HdzI-191xhU"
-  frameborder="0" allowfullscreen>
-  </iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QMssNXBCCl0" frameborder="0" allowfullscreen></iframe>
   </div >
   <div class="container-4">
   <div class="maps" id='map'>
