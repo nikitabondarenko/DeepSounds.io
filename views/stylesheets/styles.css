@@ -1,8 +1,10 @@
 .container-2 {
-flex: 1;
-  background: #c94b4b;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  flex: 1;
+  height: 100vh;
+  /*background: "http://odesza.com/wp-content/uploads/2017/06/ODESZA_A-Moment-Apart_Cover_1000.jpg";*/
+  /*background: #c94b4b;
+  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);
+  background: linear-gradient(to top, #4b134f, #c94b4b);*/
 }
 .container-4{
     flex: 1;
@@ -54,12 +56,14 @@ flex: 1;
     background-color: #333;
 
 }*/
-
-li {
+form {
+  display: flex;
+}
+li, .li {
     float: right;
 }
 
-li a {
+li a, .li a {
     display: block;
     color: white;
     text-align: center;
@@ -68,7 +72,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+li a:hover, .li a:hover {
     background-color: #111;
 }
 .header{
@@ -81,43 +85,62 @@ li a:hover {
   width: 20%;
 }
 
-img {
-  opacity: .8;
-  width: 55%;
-  height: 30%;
-
-  flex-flow: row;
-}
 .body{
   display: flex;
   flex-direction: row;
+  background: url("http://odesza.com/wp-content/uploads/2017/06/ODESZA_A-Moment-Apart_Cover_1000.jpg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
 }
 
 /*matts new css*/
 
 #bars {
-    height: 30px;
+    height: 25px;
     /*left: 50%;*/
     /*margin: -30px 0 0 -20px;*/
     position: relative;
     /*top: 50%;*/
     width: 30px;
     display: flex;
+    position: absolute;
+    bottom: 4px;
+    right: 12px;
+    /*z-index: 50;*/
+    /*z-index: -1;*/
+}
+
+.pam {
+  position: relative;
 }
 
 .soundbar {
-  .width: 50px;
-  height: auto;
+  width: 60px;
+  height: 35px;
+  position: relative;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: rgba(39, 37, 37, 0.8);
+  color: white;
+  font: bold;
+
+}
+
+.logos {
+  justify-content: center;
+  display: flex;
+  background: black;
 }
 
 .bar {
   flex: 1;
   background: #E20074;
-  bottom: 1px;
+  bottom: 0px;
   height: 3px;
   position: absolute;
   width: 3px;
   animation: sound 0ms -800ms linear infinite alternate;
+
 }
 
 @keyframes sound {

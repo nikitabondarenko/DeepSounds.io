@@ -9,25 +9,35 @@
       crossorigin="anonymous"></script>
     <title>Id = {{id}}</title>
 </head>
+<div id='ul'>
 
-<ul id= 'ul'>
   <form class="searchnav" action="/search">
     <input class = 'q' type="text" name="q" placeholder="Search Songs & Lyrics" style="width: 70%; border-radius: 15px; margin: 2px">
     <button type="submit" name="submit" class="soundbar">
-      <div id="bars">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+      <div class="">
+
+        <div id="bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <span class="pam">Go</span>
       </div>
     </button>
   </form>
-  <li><a href="default.asp">Home</a></li>
-  <li><a href="default.asp">Tours</a></li>
-  <li><a href="default.asp">Analytics</a></li>
-  <li><a href="news.asp">About</a></li>
-</ul>
+  <div class="logos">
+    <img width="100" height="50" src="https://i.imgur.com/LRLXJ4M.png" alt="">
+  </div>
+  <div class="li"><a href="default.asp">Home</a></div>
+  <div class="li"><a href="http://localhost:5001/search?artist=odesza&song=say+my+name&submit=Search">Bio</a></div>
+  <div class="li"><a href="http://localhost:5001/tours">Tours</a></div>
+  <div class="li"><a href="default.asp">Analytics</a></div>
+  <div class="li"><a href="news.asp">About</a></div>
+</div>
 
 <body>
   <!-- <div id="bars">
@@ -42,7 +52,7 @@
 
   <div class="container-2">
     <h1>{{songName}} </h1>
-    <p>Annotation : {{annotation}}</p>
+    <!-- <p>Annotation : {{annotation}}</p> -->
     <!-- <p>Statistics : {{stats.accepted_annotations}} </p>
     <p>Lyrics: {{lyrics}}</p>
     <p>Album Name: {{albumName}}</p>
@@ -50,110 +60,7 @@
     <img src="{{artistPicture}}">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QMssNXBCCl0" frameborder="0" allowfullscreen></iframe>
   </div >
-  <div class="container-4">
-  <div class="maps" id='map'>
-    <script>
 
-      var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 37.733795, lng: -122.446747},
-          zoom: 10
-        });
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Here is the nearest venue to you!');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-
-
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-          var marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: iconBase + 'parking_lot_maps.png'
-          });
-      }
-
-      $.ajax('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=V4XUQD1Kz4IoKPAuWZ39NveeylCR8NGG&postalCode=94103', {
-        success: function(json) {
-          function addMarker(map, event) {
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
-              map: map
-            });
-            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-          }
-
-          for(var i=0; i<json.page.size; i++) {
-            console.log(json._embedded.events[i].name);
-            addMarker(map, json._embedded.events[i]);
-          }
-        }
-      })
-
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyDi6cKExZW5kQyituJg-_Wc0vcyXv3E4&callback=initMap">
-    </script>
-
-    <!-- <script>
-       function initMap() {
-         var uluru = {lat: 37.7749, lng: -122.4194};
-         var map = new google.maps.Map(document.getElementById('map'), {
-           zoom: 10,
-           center: uluru
-         });
-         var marker = new google.maps.Marker({
-           position: uluru,
-           map: map
-         });
-       }
-     </script>
-     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyDi6cKExZW5kQyituJg-_Wc0vcyXv3E4&callback=initMap">
-     </script> -->
-  </div>
-  <div id="events">
-
-  </div>
-<div class="info">
-  <h1>Currently On Tour</h1>
-  <h2>Next Concert near you:
-    <a href="https://www.songkick.com/artists/6018139-odesza">This Week (Berkeley)</a></h2>
-  <h3>Distance to Nearest Venue: 13 milies </h3>
-  <h4>Bands playing near you this week:</h4>
-  <div id= 'artists'>
-    {{#each names}}
-    <div class='jay'> <a href="{{this.url}}"> {{this.name}} </a></div>
-    {{/each}}
-  </div>
-</div>
-</div>
 </div>
 </body>
 

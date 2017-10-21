@@ -68,14 +68,6 @@ app.get('/info', function (req, res) {
 
   genius.song(parseInt(req.query.id))
   .then(function(response) {
-    request('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=V4XUQD1Kz4IoKPAuWZ39NveeylCR8NGG&postalCode=94103',
-    function (error, resp, body){
-      var newBody = JSON.parse(body);
-      newBody1 = newBody._embedded.events.map((event) => (event)).splice(10)
-      newBody = newBody._embedded.events.map((event) => (event.name)).splice(10)
-      // console.log(newBody1);
-      console.log(response.song);
-
       res.render('submit', {id: req.query.id, annotation: response.song.annotation_count,
         stats : response.song.stats,
         songName: response.song.full_title,
@@ -83,16 +75,27 @@ app.get('/info', function (req, res) {
         albumName: response.song.album.full_title,
         artistPicture: response.song.primary_artist.header_image_url,
         youtubeLink: youtubeSplicer(response.song.media[0].url),
-        names: newBody1
       });
 
-    })
+
 
   }).catch(function(err){
     console.log("ERROR", err);
   });
 
 });
+
+app.get('/tours', function(req, res){
+  request('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&apikey=V4XUQD1Kz4IoKPAuWZ39NveeylCR8NGG&postalCode=94103',
+  function (error, resp, body){
+    var newBody = JSON.parse(body);
+    newBody1 = newBody._embedded.events.map((event) => (event)).splice(10)
+
+    res.render('tours', {names: newBody1});
+
+  })
+
+})
 
 app.get('/songlyrics', function(req, res){
   lyricist.song(parseInt(req.query.id)).then(function(response){
