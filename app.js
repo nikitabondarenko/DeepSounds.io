@@ -24,6 +24,17 @@ app.get('/about', function (req, res) {
   res.sendFile(__dirname+'/views/about.html');
 });
 
+app.get('/search', function (req, res) {
+  console.log(req.query.artist);
+  genius.search(req.query.artist + ' ' + req.query.song).then(function(response) {
+    console.log(response.hits[0].result);
+    res.render('submit', {hit: response.hits[0].result});
+  })
+  .catch(function(err){
+    console.log("ERROR", err);
+  })
+})
+
 app.get('/info', function (req, res) {
   console.log("REQ", req.query.id)
   //lyricist.song(req.query.id).then(song => console.log(song.title));
@@ -75,6 +86,6 @@ app.get('/*', function (req, res) {
   res.redirect('/');
 });
 
-app.listen(5000, function(){
-  console.log("app.js listening on port 5000")
+app.listen(5001, function(){
+  console.log("app.js listening on port 5001")
 })
