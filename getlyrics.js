@@ -11,7 +11,7 @@ const lyricist = new Lyricist(process.env.GENIUS_CLIENT_ACCESS_TOKEN);
 //song title
 //lyricist.song(714198).then(song => console.log(song.title));
 
-lyricist.song(714198, { fetchLyrics: true }).then(song =>
+lyricist.song(514133, { fetchLyrics: true }).then(song =>
   fs.writeFile('lyrics.txt', song.lyrics, function (err) {
     console.log(song.lyrics)
     if (err) {
