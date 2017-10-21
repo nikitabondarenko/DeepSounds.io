@@ -7,7 +7,7 @@
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
-    <title>Id = {{id}}</title>
+    <title>DeepSounds.io</title>
 </head>
 
 <div id='ul'>
@@ -48,12 +48,12 @@
       <div class="info" style="color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
         <h1>Currently On Tour</h1>
         <h2>Next Concert near you:
-          <a href="https://www.songkick.com/artists/6018139-odesza">This Week (Berkeley)</a></h2>
+          <a href="https://www.songkick.com/artists/6018139-odesza" target="_blank">This Week (Berkeley)</a></h2>
         <h3>Distance from current location: 13.1 miles </h3>
         <h4>Bands playing near you this week:</h4>
         <div id= 'artists'>
           {{#each names}}
-          <div class='jay' style="font-size: 50;"> <a href="{{this.url}}"> {{this.name}} </a></div>
+          <div class='jay' style="font-size: 50;"> <a href="{{this.url}}" target="_blank"> {{this.name}} </a></div>
           {{/each}}
         </div>
       </div>
