@@ -1,6 +1,8 @@
 .container-2 {
   flex: 1;
-  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  /*opacity: .;*/
   /*background: "http://odesza.com/wp-content/uploads/2017/06/ODESZA_A-Moment-Apart_Cover_1000.jpg";*/
   /*background: #c94b4b;
   background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);
@@ -8,25 +10,23 @@
 }
 .container-4{
     flex: 1;
-    background: #c94b4b;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: 3px solid;
+    display: flex;
+    margin-left: 210px;
 
 }
+
+.media {
+  opacity: .9;
+}
+
 #artists {
   display: flex;
   flex-direction: column;
 }
 
 .maps{
-  height: 50vh;
-  width: 100%;
-
-
-  background: #c94b4b;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 400px;
+  width: 400px;
 }
 .info {
   height: 50vh;
@@ -35,6 +35,7 @@
   color:  black;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #ul {
@@ -50,12 +51,7 @@
   background-color: black;
   list-style-type : none;
 }
-/*ul {
-    margin: 0;
-    padding: 0;
-    background-color: #333;
 
-}*/
 form {
   display: flex;
 }
@@ -87,11 +83,21 @@ li a:hover, .li a:hover {
 
 .body{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: url("http://odesza.com/wp-content/uploads/2017/06/ODESZA_A-Moment-Apart_Cover_1000.jpg");
   background-repeat: no-repeat;
   background-size:100% 100%;
+  height: 100vh;
 }
+.tours {
+  /*display: flex;
+  flex-direction: column;*/
+  background: url("https://iso.500px.com/wp-content/uploads/2015/07/lombardo_cover.jpeg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  height: 100vh;
+}
+
 
 /*matts new css*/
 
@@ -126,11 +132,30 @@ li a:hover, .li a:hover {
 
 }
 
-.logos {
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.bio {
+  background: black;
+  opacity: .7;
+  color: white;
+  /*height: 45%;*/
+
+}
+
+.bio2 {
+  /*height: 45%;*/
+  padding: 20px 20px;
+}
+
+/*.logos {
   justify-content: center;
   display: flex;
   background: black;
-}
+}*/
 
 .bar {
   flex: 1;

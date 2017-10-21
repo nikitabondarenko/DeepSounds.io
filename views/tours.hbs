@@ -11,6 +11,7 @@
 </head>
 
 <div id='ul'>
+
   <form class="searchnav" action="/search">
     <input class = 'q' type="text" name="q" placeholder="Search Songs & Lyrics" style="width: 70%; border-radius: 15px; margin: 2px">
     <button type="submit" name="submit" class="soundbar">
@@ -34,23 +35,28 @@
   </div>
   <div class="li"><a href="default.asp">Home</a></div>
   <div class="li"><a href="http://localhost:5001/search?artist=odesza&song=say+my+name&submit=Search">Bio</a></div>
-  <div class="li"><a href="default.asp">Tours</a></div>
+  <div class="li"><a href="http://localhost:5001/tours">Tours</a></div>
   <div class="li"><a href="default.asp">Analytics</a></div>
   <div class="li"><a href="news.asp">About</a></div>
 </div>
 
 <body>
-  <!-- <div id="bars">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-</div> -->
 
-  <div class="body">
 
-  <div class="container-4">
+  <div class="tours">
+    <div class="container-4">
+      <div class="info" style="color: white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+        <h1>Currently On Tour</h1>
+        <h2>Next Concert near you:
+          <a href="https://www.songkick.com/artists/6018139-odesza">This Week (Berkeley)</a></h2>
+        <h3>Distance from current location: 13.1 miles </h3>
+        <h4>Bands playing near you this week:</h4>
+        <div id= 'artists'>
+          {{#each names}}
+          <div class='jay' style="font-size: 50;"> <a href="{{this.url}}"> {{this.name}} </a></div>
+          {{/each}}
+        </div>
+      </div>
   <div class="maps" id='map'>
     <script>
 
@@ -72,7 +78,7 @@
 
               // infoWindow.setPosition(pos);
               // infoWindow.setContent('Odesza concert is 13 miles away from you');
-              infoWindow.open(map);
+              // infoWindow.open(map);
               map.setCenter(pos);
             }, function() {
               handleLocationError(true, infoWindow, map.getCenter());
@@ -135,21 +141,7 @@
       </script>
 
   </div>
-  <div id="events">
 
-  </div>
-<div class="info">
-  <h1>Currently On Tour</h1>
-  <h2>Next Concert near you:
-    <a href="https://www.songkick.com/artists/6018139-odesza">This Week (Berkeley)</a></h2>
-  <h3>Distance from current location is 13.1 miles </h3>
-  <h4>Bands playing near you this week:</h4>
-  <div id= 'artists'>
-    {{#each names}}
-    <div class='jay'> <a href="{{this.url}}"> {{this.name}} </a></div>
-    {{/each}}
-  </div>
-</div>
 </div>
 </div>
 </body>
