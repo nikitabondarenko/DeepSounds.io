@@ -97,14 +97,9 @@ app.get('/tours', function(req, res){
 
 })
 
-app.get('/songlyrics', function(req, res){
-  lyricist.song(parseInt(req.query.id)).then(function(response){
-    console.log(response.song.title)
-    console.log(response.song.lyris)
-    res.render('lyrics', {id: req.query.id, title: response.song.title, lyrics: response.song.lyrics})
-  }).catch(function(err){
-    console.log("ERROR", err);
-  })
+app.get('/analytics', function(req, res){
+
+    res.sendFile(__dirname+'/views/analytics.html');
 })
 
 app.get('/*', function (req, res) {
